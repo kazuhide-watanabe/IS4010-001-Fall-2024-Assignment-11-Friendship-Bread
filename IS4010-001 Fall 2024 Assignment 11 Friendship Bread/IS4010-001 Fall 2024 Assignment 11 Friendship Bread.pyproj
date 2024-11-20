@@ -21,6 +21,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cleaningPackage\deleteDupe.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cleaningPackage\deletePepsi.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cleaningPackage\twoDecimal.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cleaningPackage\updateZip.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="cleaningPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CSVPackage\CSVProcessor.py">
       <SubType>Code</SubType>
     </Compile>
@@ -33,11 +48,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="cleaningPackage\" />
     <Folder Include="CSVPackage\" />
     <Folder Include="mainPackage\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\cleanedData.csv" />
+    <Content Include="Data\dataAnomalies.csv" />
     <Content Include="Data\fuelPurchaseData.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

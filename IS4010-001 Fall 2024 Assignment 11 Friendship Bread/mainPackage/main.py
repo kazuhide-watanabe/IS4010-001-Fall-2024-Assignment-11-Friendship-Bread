@@ -10,6 +10,7 @@ def main():
     input_csv = 'Data/fuelPurchaseData.csv'
     anomalies_csv = 'Data/dataAnomalies.csv'
     cleaned_csv = 'Data/cleanedData.csv'
+    missing_zip_csv = 'Data/missingZipAddresses.csv'
 
     # Load the dataset
     with open(input_csv, mode='r') as file:
@@ -31,26 +32,14 @@ def main():
         writer.writerows(data)
 
     print("Data cleanup completed. Cleaned data saved to:", cleaned_csv)
+    
+    
+    # Process the data to find addresses missing zip codes
+    extract_missing_zip_addresses(data, missing_zip_csv)
+    print(f"Missing zip addresses written to {missing_zip_csv}")
+
+    # Update missing zip codes
+    update_missing_zip_addresses(data, missing_zip_csv, cleaned_csv)
 
 if __name__ == "__main__":
     main()
-
-    # Set the API URL
-    url = 'https://app.zipcodebase.com/api/v1/status?apikey=3f9cf660-a63c-11ef-9831-479c9c8e62aa'
-    api = API(url)
-
-    # Fetch data from the API
-    data = api.fetchData()
-
-    # Extract relevant data: comic titles and character counts
-    extractedData, characterCounts = api.extractData(data)
-
-    # Print extracted comic titles
-    print("Comic Titles:")
-    for item in extractedData:
-        print(item["title"])
-
-    # Print character counts
-    print("\nCharacter Counts:")
-    for character, count in characterCounts.items():
-        print(f"{character}: {count}")
